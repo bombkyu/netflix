@@ -1,4 +1,4 @@
-
+/* 
 body {
   padding: 0;
   margin: 0;
@@ -11,7 +11,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
+  display: flex;    
   justify-content: center;
   width: 100%;
   height: 70px;
@@ -24,14 +24,14 @@ body {
   grid-template-columns: 1fr 6fr 3fr;
 }
 .js-header__logo {
-    /* border: 1px solid white; */
+
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .js-header__menus {
-    /* border:1px solid white; */
+
     display: flex;
     align-items: center;
 }
@@ -50,7 +50,7 @@ body {
 }
 
 .js-header__others {
-    /* border: 1px solid white; */
+  
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -104,5 +104,5 @@ body {
     background-color: transparent;
     border: 1px solid white;
     color: white;
-    /* display: inline-block; */
-}
+
+} */
