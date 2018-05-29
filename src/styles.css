@@ -2,7 +2,7 @@
 body {
   padding: 0;
   margin: 0;
-  height: 3000vh;
+  height: 300vh;
   background-color: black;
   font-family:  'Roboto';
 }
@@ -84,25 +84,65 @@ body {
   background-color: black;
 }
 
-.video {
-    border: 1px solid white;
-}
-
 .js-video {
   width: 100%;
 }
 
-.video-button {
+.js-videoController {
+    display: flex;
+    flex-direction: column;
     position: relative;
-    bottom: 100px;
+    bottom:200px;
+    left:50px;
+}
+
+.js-playBtn {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 45px;
-    width: 45px;
     border-radius: 50%;
-    background-color: transparent;
     border: 1px solid white;
-    color: white;
-
+    color:white;
+    background-color: transparent;
+    height: 40px;
+    width:40px;
+    margin-bottom: 10px;
 }
+
+.js-volumeController {
+    display: flex;
+    width: 20%;
+    
+}
+
+.js-muteBtn {
+    border:1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid white;
+    color:white;
+    background-color: transparent;
+    height: 40px;
+    width:40px;
+}
+
+/* .js-volumeRange {
+    position: relative;
+    display: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+} */
+
+/* .js-volumeRange::-webkit-slider-runnable-track {
+    position: relative;
+    background-color:white;
+    border-radius: 3px;
+    border:1px solid black;
+}
+
+.js-volumeRange::-webkit-slider-thumb {
+    position: relative;
+    background-color:black;
+} */
