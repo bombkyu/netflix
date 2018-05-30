@@ -44,11 +44,20 @@
         <video class="js-video" src="https://ia800602.us.archive.org/4/items/mov-bbb/mov_bbb.mp4">
             <!-- <video class="js-video" src="https://www.youtube.com/watch?v=DmLyjnuMIVc"> -->
         </video>
-        <!-- <div class="video-button"><span>mute</span></div> -->
     </div>
-    <button class="js-muteBtn">Mute</button>
-    <button class="js-playBtn">Play</button>
-    <input class="js-volumeRange" type="range" min="0" max="1" step="0.1">
+    <div class="js-videoController">
+        <div class="js-playBtn">
+            <i class="fa fa-play"></i>
+        </div>
+        <div class="js-volumeController">
+            <div class="js-muteBtn">
+                <i class="fa fa-volume-off fa-lg"></i>
+            </div>
+            <input class="js-volumeRange" type="range" min="0" max="1" step="0.1">
+        </div>
+    </div>
+    
+    
     
 <script type="text/javascript" src="bundle.js"></script></body>
 </html>

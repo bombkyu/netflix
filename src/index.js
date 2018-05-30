@@ -1,19 +1,22 @@
 import "./styles.css";
 
-const header = document.querySelector(".js-header"),
-    video = document.querySelector(".js-video"),
-    muteBtn = document.querySelector(".js-muteBtn"),
-    playBtn = document.querySelector(".js-playBtn"),
-    volumeController = document.querySelector(".js-volumeController"),
-    volumeRange = document.querySelector(".js-volumeRange"),
-    search = document.querySelector(".js-header__others-search"),
-    searchInput = document.querySelector(".js-search"),
-    searchForm = document.querySelector(".js-search-form");
+const header = document.querySelector('.js-header'),
+	video = document.querySelector('.js-video'),
+	muteBtn = document.querySelector('.js-muteBtn'),
+	playBtn = document.querySelector('.js-playBtn'),
+	volumeController = document.querySelector('.js-volumeController'),
+	volumeRange = document.querySelector('.js-volumeRange'),
+	search = document.querySelector('.js-header__others-search'),
+	searchInput = document.querySelector('.js-search'),
+	searchForm = document.querySelector('.js-search-form'),
+	videoItems = document.querySelectorAll('.js-videoList__item'),
+	videoList = Array.from(videoItems),
+	videoItemPlayBtn = document.querySelector('.js-videoList__item-playBtn');
 
 // video.autoplay = true;
 
 const loadSettings = () => {
-    
+    console.log(videoList);
     const loadMute = localStorage.getItem("muted");
     volumeRange.value = video.volume;
 
@@ -112,6 +115,50 @@ const handleMouseLeave = event => {
     volumeRange.style.display = "none";
 }
 
+const handleMouseEnterVideoList = event => {
+    const selectedVideo = event.target;
+    selectedVideo.children[1].style.display="flex";
+    selectedVideo.children[2].style.display = "flex";
+    selectedVideo.classList.add("selected");
+    moveBoxesRight(selectedVideo);
+    moveBoxesLeft(selectedVideo);
+
+}
+
+const handleMouseLeaveVideoList = event => {
+    videoList.forEach(video => {
+        video.classList.remove("selected", "right", "left");
+    })
+    const selectedVideo = event.target;
+    selectedVideo.children[1].style.display = "none";
+    selectedVideo.children[2].style.display = "none";
+    selectedVideo.classList.remove("selected");
+}
+
+const moveBoxesRight = selectedVideo => {
+    const nextBox = selectedVideo.nextElementSibling;
+    if (nextBox !== null) {
+        nextBox.classList.add("right");
+        if (nextBox.nextElementSibling !== null) {
+            moveBoxesRight(nextBox);
+        }
+    }
+};
+
+const moveBoxesLeft = selectedVideo => {
+    const prevBox = selectedVideo.previousElementSibling;
+    if (prevBox !== null) {
+        prevBox.classList.add("left");
+        if (prevBox.nextElementSibling !== null) {
+            moveBoxesLeft(prevBox);
+        }
+    }
+};
+
+const handleVideoPlay = event => {
+    console.log("Play FullScreen!");
+}
+
 const playVideo = event => {
     video.play();
     if(!video.paused) {
@@ -137,6 +184,10 @@ const unmuteSound = event => {
 
 loadSettings();
 
+videoList.forEach(video => {
+	video.addEventListener('mouseenter', handleMouseEnterVideoList);
+	video.addEventListener('mouseleave', handleMouseLeaveVideoList);
+});
 muteBtn.addEventListener("click", handleMute);
 muteBtn.addEventListener('mouseenter', handleMouseEnter);
 volumeController.addEventListener('mouseleave', handleMouseLeave);
@@ -144,7 +195,10 @@ playBtn.addEventListener("click", handlePlay);
 volumeRange.addEventListener("change", handleVolume);
 search.addEventListener("click", handleSearch);
 window.addEventListener('scroll', handleScroll);
+videoItemPlayBtn.addEventListener("click", handleVideoPlay);
+
 // searchInput.addEventListener("change", handleSearchInput);
 searchForm.addEventListener("submit", handleSubmit);
+
 
 
