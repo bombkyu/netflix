@@ -3,7 +3,8 @@ import "./styles.css";
 const header = document.querySelector('.js-header'),
 	video = document.querySelector('.js-video'),
 	muteBtn = document.querySelector('.js-muteBtn'),
-	playBtn = document.querySelector('.js-playBtn'),
+    playBtn = document.querySelector('.js-playBtn__container'),
+    playBtnIcon = document.querySelector('.js-playBtn'),
 	volumeController = document.querySelector('.js-volumeController'),
 	volumeRange = document.querySelector('.js-volumeRange'),
 	search = document.querySelector('.js-header__others-search'),
@@ -11,7 +12,9 @@ const header = document.querySelector('.js-header'),
 	searchForm = document.querySelector('.js-search-form'),
 	videoItems = document.querySelectorAll('.js-videoList__item'),
 	videoList = Array.from(videoItems),
-	videoItemPlayBtn = document.querySelector('.js-videoList__item-playBtn');
+	videoItemPlayBtn = document.querySelector('.js-videoList__item-playBtn'),
+    videoFullScreen = document.querySelector('.js-videoList__item-video'),
+    videoListBtn = document.querySelector('.js-videoList__btn');
 
 // video.autoplay = true;
 
@@ -119,20 +122,31 @@ const handleMouseEnterVideoList = event => {
     const selectedVideo = event.target;
     selectedVideo.children[1].style.display="flex";
     selectedVideo.children[2].style.display = "flex";
-    selectedVideo.classList.add("selected");
+    if(selectedVideo.previousElementSibling === null) {
+        selectedVideo.classList.add("selected-left");
+    } else if(selectedVideo.nextElementSibling === null) {
+        selectedVideo.classList.add('selected-right');
+    } else {
+        selectedVideo.classList.add("selected");
+    }
+
     moveBoxesRight(selectedVideo);
     moveBoxesLeft(selectedVideo);
+
+    // videoListBtn.style.display="flex";
 
 }
 
 const handleMouseLeaveVideoList = event => {
-    videoList.forEach(video => {
-        video.classList.remove("selected", "right", "left");
-    })
+    
     const selectedVideo = event.target;
     selectedVideo.children[1].style.display = "none";
     selectedVideo.children[2].style.display = "none";
-    selectedVideo.classList.remove("selected");
+    // selectedVideo.classList.remove("selected");
+    videoList.forEach(video => {
+		video.classList.remove('selected',"selected-left","selected-right", 'right', 'left');
+    });
+    // videoListBtn.style.display = "none";
 }
 
 const moveBoxesRight = selectedVideo => {
@@ -157,18 +171,38 @@ const moveBoxesLeft = selectedVideo => {
 
 const handleVideoPlay = event => {
     console.log("Play FullScreen!");
+    if (videoFullScreen.paused) {
+        if (videoFullScreen.requestFullscreen) {
+            videoFullScreen.requestFullscreen();
+        }
+        else if (videoFullScreen.msRequestFullscreen) {
+            videoFullScreen.msRequestFullscreen();
+        }
+        else if (videoFullScreen.mozRequestFullScreen) {
+            videoFullScreen.mozRequestFullScreen();
+        }
+        else if (videoFullScreen.webkitRequestFullScreen) {
+            videoFullScreen.webkitRequestFullScreen();
+        } 
+        videoFullScreen.play();
+    } 
+    else {
+        videoFullScreen.pause();
+    }
+    
 }
 
 const playVideo = event => {
     video.play();
     if(!video.paused) {
-        playBtn.innerHTML = `<i class="fa fa-pause"></i>`;
+        console.log(playBtn.children);
+        playBtnIcon.innerHTML = `<i class="fa fa-pause"></i>`;
     }
 }
 
 const pauseVideo = event => {
     video.pause();
-    playBtn.innerHTML = `<i class="fa fa-play"></i>`;
+    playBtnIcon.innerHTML = `<i class="fa fa-play"></i>`;
 }
 
 const muteSound = event => {
@@ -196,6 +230,7 @@ volumeRange.addEventListener("change", handleVolume);
 search.addEventListener("click", handleSearch);
 window.addEventListener('scroll', handleScroll);
 videoItemPlayBtn.addEventListener("click", handleVideoPlay);
+// videoListBtn.addEventListener("hover")
 
 // searchInput.addEventListener("change", handleSearchInput);
 searchForm.addEventListener("submit", handleSubmit);
