@@ -1,0 +1,85 @@
+.video__section {
+    margin-bottom: 50px;
+}
+
+.js-video {
+  width: 100%;
+}
+
+/* Video Controller CSS  */
+
+.js-videoController {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom:100px;
+    left:50px;
+    /* border:1px solid white; */
+}
+
+.js-playBtn__container {
+    display:flex;
+    align-items: center;
+    /* border: 1px solid white; */
+    padding: 5px 20px 5px 5px;
+    border-radius: 5px;
+    color:white;
+    background-color: rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+    width:150px;
+}
+.js-playBtn__container:hover {
+    color:black;
+    background-color: rgba(255,255,255,0.2);
+}
+.js-playBtn__text {
+    margin-left: 10px;
+    /* color:white; */
+}
+
+.js-playBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border-radius: 50%; */
+    /* border: 1px solid white; */
+    /* color:white; */
+    background-color: transparent;
+    height: 40px;
+    width:40px;
+    
+}
+
+
+.js-volumeController {
+    display: flex; 
+    width:200px;   
+}
+
+.js-muteBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    /* border: 1px solid white; */
+    color:white;
+    background-color: rgba(0,0,0,0.2);
+    height: 40px;
+    width:40px;
+}
+
+.js-muteBtn:hover {
+    color:black;
+    background-color: rgba(255,255,255,0.2);
+    
+}
+
+.js-volumeRange {
+    display: none;
+}
+
+@media screen and (max-width:425px) {
+    .video__section {
+        display: none;
+    }
+}

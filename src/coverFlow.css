@@ -1,0 +1,25 @@
+.selected {
+    transform: scale(2);
+    z-index: 1;
+    width:100%;
+}
+.selected-left {
+    transform-origin: left;
+    transform: scale(2,2);
+    z-index: 1;
+    width:100%;
+}
+.selected-right {
+    transform-origin: right;
+    transform: scale(2,2);
+    z-index: 1;
+    width:100%;
+}
+
+.right {
+  transform: translate(50px);
+}
+
+.left {
+  transform: translate(-50px);
+}

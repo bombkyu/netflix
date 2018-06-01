@@ -11,34 +11,40 @@
 <body>
     <header class="js-header">
         <div class="inner">
-        <div class="js-header__logo">
-            <img src="<%= require("./images/logo/netflix_logo.png") %>" alt="netflix">
-        </div>
-        <div class="js-header__menus">
-            <ul class="js-header__menus-list">
-                <li class="js-header__menus-item">Home</li>
-                <li class="js-header__menus-item">TV Shows</li>
-                <li class="js-header__menus-item">Movies</li>
-                <li class="js-header__menus-item">Originals</li>
-                <li class="js-header__menus-item">Recently Added</li>
-                <li class="js-header__menus-item">My List</li>
-            </ul>
-        </div>
-        <div class="js-header__others">
-            <div class="js-header__others-search">
-                <i class="fa fa-search fa-lg"></i>
-                
+            <div class="js-header__hamburger-icon">
+                <i class="fa fa-bars"></i>
             </div>
-            <div class="js-header__others-kids">
-                <span>kids</span>
+            <div class="js-header__logo">
+                <img src="<%= require("./images/logo/netflix_logo.png") %>" alt="netflix">
             </div>
-            <div class="js-header__others-notification">
-                <i class="fa fa-bell fa-lg"></i>
+            <div class="js-header__menus">
+                <ul class="js-header__menus-list">
+                    <li class="js-header__menus-item">Home</li>
+                    <li class="js-header__menus-item">TV Shows</li>
+                    <li class="js-header__menus-item">Movies</li>
+                    <li class="js-header__menus-item">Originals</li>
+                    <li class="js-header__menus-item">Recently Added</li>
+                    <li class="js-header__menus-item">My List</li>
+                </ul>
             </div>
-            <div class="js-header__ohters-profile">
-                <i class="fa fa-user-circle fa-lg"></i>
+            <div class="js-header__others">
+                <div class="js-header__others-search">
+                    <i class="fa fa-search fa-lg"></i>
+                </div>
+                <div class="js-header__others-kids">
+                    <span>kids</span>
+                </div>
+                <div class="js-header__others-notification">
+                    <i class="fa fa-bell fa-lg"></i>
+                </div>
+                <div class="js-header__ohters-profile">
+                    <i class="fa fa-user-circle fa-lg"></i>
+                </div>
             </div>
-        </div>
+            <form class="js-search-form-resp">
+                <i class="fa fa-times fa-lg js-searchCloseBtn-resp"></i>
+                <input class="js-search-resp open" type="text" placeholder="search" />
+            </form>
         </div>
     </header>
     <section class="video__section">
@@ -72,7 +78,7 @@
                     <i class="fa fa-chevron-down"></i>
                 </div>
                 <div class="js-video__fullScreen">
-                    <video class="js-videoList__item-video" src="https://khseok1060.github.io/ketflix/ade29964bb8db46b4eccec05cca48ced.mp4">
+                    <video class="js-videoList__item-video" src="https://ia800602.us.archive.org/4/items/mov-bbb/mov_bbb.mp4">
                     </video>
                     <div class="js-video__fullScreen-controller">
                         <div class="js-video__fullScreen-controller-top">

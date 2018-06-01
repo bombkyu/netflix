@@ -30,6 +30,7 @@ const header = document.querySelector('.js-header'),
 // video.autoplay = true;
 
 let isFullScreen = false;
+let isMouseMoving =false;
 
 const loadSettings = () => {
     console.log(videoList);
@@ -51,19 +52,28 @@ video.onended = () => {
 const handleScroll = event => {
     const scrollHeight = window.scrollY;
     // console.log(scrollHeight);
-    if (scrollHeight > 20) {
-        header.classList.add("black");
-    } else {
-        header.classList.remove("black");
-    }
-
-    if(!isFullScreen) {
-        if (scrollHeight > 300) {
-            pauseVideo();
-            
+    
+    if(screen.width > 425) {
+        if (scrollHeight > 20) {
+            header.classList.add("black");
         } else {
-            playVideo();
+            header.classList.remove("black");
         }
+        if(!isFullScreen) {
+            if (scrollHeight > 300) {
+                pauseVideo();
+                
+            } else {
+                playVideo();
+            }
+        }
+    } else {
+        header.classList.add('black');
+        if (scrollHeight > 20) {
+			header.classList.remove('black');
+		} else {
+            header.classList.add('black');
+		}
     }
     
 };
@@ -134,19 +144,21 @@ const handleMouseLeave = event => {
 }
 
 const handleMouseEnterVideoList = event => {
-    const selectedVideo = event.target;
-    selectedVideo.children[1].style.display="flex";
-    selectedVideo.children[2].style.display = "flex";
-    if(selectedVideo.previousElementSibling === null) {
-        selectedVideo.classList.add("selected-left");
-    } else if(selectedVideo.nextElementSibling === null) {
-        selectedVideo.classList.add('selected-right');
-    } else {
-        selectedVideo.classList.add("selected");
-    }
+    if(screen.width>425) {
+        const selectedVideo = event.target;
+        selectedVideo.children[1].style.display="flex";
+        selectedVideo.children[2].style.display = "flex";
+        if(selectedVideo.previousElementSibling === null) {
+            selectedVideo.classList.add("selected-left");
+        } else if(selectedVideo.nextElementSibling === null) {
+            selectedVideo.classList.add('selected-right');
+        } else {
+            selectedVideo.classList.add("selected");
+        }
 
-    moveBoxesRight(selectedVideo);
-    moveBoxesLeft(selectedVideo);
+        moveBoxesRight(selectedVideo);
+        moveBoxesLeft(selectedVideo);
+    }
 
     // videoListBtn.style.display="flex";
 
@@ -225,10 +237,14 @@ const handleFullScreenVolume = () => {
  
 }
 const handleFullScreenControllerApper = () => {
-
-    if(fullScreenController.style.display === "none") {
-        fullScreenController.style.display = "flex";
+    fullScreenController.style.display = 'flex';
+    isMouseMoving = true;
+    if(!isMouseMoving) {
+        setTimeout(() => {
+            fullScreenController.style.display = 'none';
+        }, 3000);
     }
+   
     
 }
 const handleFullScreenVolumeChange = event => {
