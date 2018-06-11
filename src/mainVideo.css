@@ -1,5 +1,6 @@
 .video__section {
     margin-bottom: 50px;
+    position: relative;
 }
 
 .js-video {

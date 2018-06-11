@@ -53,7 +53,7 @@ const handleScroll = event => {
     const scrollHeight = window.scrollY;
     // console.log(scrollHeight);
     
-    if(screen.width > 425) {
+    if(screen.width > 768) {
         if (scrollHeight > 20) {
             header.classList.add("black");
         } else {
@@ -67,7 +67,8 @@ const handleScroll = event => {
                 playVideo();
             }
         }
-    } else {
+    } 
+    else {
         header.classList.add('black');
         if (scrollHeight > 20) {
 			header.classList.remove('black');
@@ -144,9 +145,10 @@ const handleMouseLeave = event => {
 }
 
 const handleMouseEnterVideoList = event => {
-    if(screen.width>425) {
+    // console.log(screen.width);
+    if(screen.width>768) {
         const selectedVideo = event.target;
-        selectedVideo.children[1].style.display="flex";
+        selectedVideo.children[1].style.display = "flex";
         selectedVideo.children[2].style.display = "flex";
         if(selectedVideo.previousElementSibling === null) {
             selectedVideo.classList.add("selected-left");
@@ -158,7 +160,7 @@ const handleMouseEnterVideoList = event => {
 
         moveBoxesRight(selectedVideo);
         moveBoxesLeft(selectedVideo);
-    }
+    } 
 
     // videoListBtn.style.display="flex";
 
@@ -248,7 +250,7 @@ const handleFullScreenControllerApper = () => {
     
 }
 const handleFullScreenVolumeChange = event => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     videoFullScreen.volume = event.target.value;
     if (videoFullScreen.volume === 0) {
         fullScreenVolumeBtn.innerHTML = `<i class="fa fa-volume-off"></i>`;
